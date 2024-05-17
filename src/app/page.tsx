@@ -10,7 +10,7 @@ export default function initialPage() {
     <>
       <div className="h-screen">
         <Link
-          href="./home"
+          href="./login"
           className="cursor-default"
         >
           <div className="bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678] h-screen">
