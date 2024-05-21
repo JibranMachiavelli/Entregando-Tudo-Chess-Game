@@ -15,14 +15,14 @@ export default function initialPage() {
         >
           <div className="w-screen h-screen bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678]">
             <div className="flex items-center">
-              <div className="border-b m-2 w-full"></div>
+              <div className="border-b m-2 w-full z-20"></div>
               <div className="relative w-12 h-12 m-2">
                 <Image
                   src={iconHorsePixel}
                   alt="Icon Inicial"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-full"
+                  className="rounded-full z-20"
                 />
               </div>
             </div>
