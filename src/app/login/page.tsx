@@ -1,39 +1,53 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
+import loginLogo from '../public/assets/login-logo-01.png';
+import Button from '../components/general/Button';
+import Input from '../components/data-entry/Input';
 
 export default function Login() {
   return (
-    <>
+    <div className="relative overflow-hidden">
+      <div className="absolute top-0 right-8 w-80 h-80 bg-[#02735E] mix-blend-multiply filter blur-xl opacity-70 rounded-full animate-blob z-10"></div>
+      <div className="absolute top-0 left-20 w-80 h-80 bg-[#03A678] mix-blend-multiply filter blur-xl opacity-70 rounded-full animate-blob animation-delay-2000 z-10"></div>
+      <div className="absolute bottom-8 left-22 w-80 h-80 bg-[#3abd2e] mix-blend-multiply filter blur-xl opacity-70 rounded-full animate-blob animation-delay-4000 z-10"></div>
       <div className="bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678] h-screen">
-        <div className="flex justify-left items-center h-screen ml-96">
-          <form className="shadow-lg p-8 bg-white rounded-lg">
-            <div className="flex flex-col mb-4 gap-2">
-              <label className="font-light">E-mail</label>
-              <input
-                type="email"
-                placeholder=""
-                className="border rounded shadow h-8 text-left ps-4 font-light"
-              />
+        <div className="flex justify-between justify-left items-center h-screen w-full">
+          <form className="shadow-lg p-8 bg-white rounded-lg m-auto z-20 py-12">
+            <div className="flex flex-col mb-4 gap-8">
+              <div className="">
+                <Input
+                  size="medium"
+                  type="text"
+                  label="Nome:"
+                  labelPlaceholder="Digite sua senha"
+                />
+              </div>
+              <div className="">
+                <Input
+                  size="medium"
+                  type="text"
+                  label="Nome:"
+                  labelPlaceholder="Digite seu e-mail"
+                />
+              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <label className="font-light">PassWord</label>
-              <input
-                type="password"
-                placeholder="**********"
-                className="border rounded shadow h-8 text-left ps-4 font-light"
-              />
-            </div>
+
             <div className="text-center my-8">
               <Link href="./home">
-                <button className="border rounded w-full h-8 shadow border-b-2 border-b-[#F27405] bg-[#fcebdc] text-[#731702] font-medium">
-                  Acessar
-                </button>
+                <Button>Acessar</Button>
               </Link>
             </div>
           </form>
+          <div className="w-[46.67vh] m-auto z-20">
+            <Image
+              src={loginLogo}
+              alt="Login Logo"
+            />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

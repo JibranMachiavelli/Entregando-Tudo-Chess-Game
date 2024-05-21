@@ -1,5 +1,3 @@
-import { transform } from "next/dist/build/swc";
-import { blob } from "stream/consumers";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -10,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      scale: {
+        '98': '0.98',
+      },
       animation: {
         blob: "blob 10s infinite",
       },
@@ -36,12 +37,17 @@ const config: Config = {
         }
       },
       backgroundImage: {
-      "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      "gradient-conic":
-      "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+    },
+  },
+  variants: {
+    extend: {
+      scale: ['active', 'hover'],
     },
   },
   plugins: [],
 };
+
 export default config;
