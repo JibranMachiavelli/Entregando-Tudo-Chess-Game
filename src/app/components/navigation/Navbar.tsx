@@ -4,21 +4,21 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 w-full bg-gray-800 bg-opacity-50 p-4">
+    <nav className="fixed top-0 w-full bg-gray-800 bg-opacity-50 p-4 z-10">
       <ul className="flex justify-around">
         <li>
-          <Link href="/">
-            <p className="text-white">Credits</p>
+          <Link href="./">
+            <div className="text-white cursor-pointer ">Credits</div>
           </Link>
         </li>
         <li>
-          <Link href="/about">
-            <p className="text-white">Profile</p>
+          <Link href="./">
+            <div className="text-white cursor-pointer ">Profile</div>
           </Link>
         </li>
         <li>
-          <Link href="/contact">
-            <p className="text-white">Exit</p>
+          <Link href="./login">
+            <div className="text-white cursor-pointer ">Exit</div>
           </Link>
         </li>
       </ul>

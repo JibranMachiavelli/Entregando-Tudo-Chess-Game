@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import Text from './components/general/Text';
 import iconHorsePixel from './public/assets/icon-horse-pixel-01.png';
 
 export default function initialPage() {

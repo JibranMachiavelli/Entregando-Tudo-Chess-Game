@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <div className="w-screen h-screen bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678]">
         <Navbar />
-        <div className="fixed w-screen h-[85vh] flex items-center justify-center text-6xl font-bold text-white">
+        <div className="fixed w-screen h-[85vh] flex items-center justify-center text-6xl font-bold text-white select-none z-0">
           Lets GO? NOOB
         </div>
         <div className="h-screen w-screen flex justify-center items-end pb-52">
