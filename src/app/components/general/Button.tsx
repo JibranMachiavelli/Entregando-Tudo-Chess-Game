@@ -3,12 +3,14 @@ import React, { ReactNode } from 'react';
 type ButtonProps = {
   size?: "small" | "medium" | "large";
   type?: "fill" | "outline" | "text";
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   children: ReactNode;
 };
 
-export default function Button({size="medium", type="fill", children}: ButtonProps) {
+export default function Button({size="medium", type="fill", children, onClick}: ButtonProps) {
   return (
     <button
+    onClick={onClick}
     className={`
       ${{
         small: "w-28 h-10 text-sm",

@@ -6,6 +6,7 @@ type InputProps = {
   placeholder?: string;
   label?: string;
   labelPlaceholder?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function Input({
@@ -14,6 +15,7 @@ export default function Input({
   placeholder = '',
   label,
   labelPlaceholder,
+  onChange,
 }: InputProps) {
   return (
     <div className="relative">
@@ -32,6 +34,7 @@ export default function Input({
           transition-all duration-200 px-3
           [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0
         `}
+        onChange={onChange}
       />
       {label && (
         <label
