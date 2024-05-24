@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Navbar from '../../components/navigation/Navbar';
-import ModalStart from '../../components/general/ModalStart';
+import ModalStart from './components/ModalStart';
 
 export default function Home() {
-  let [isModalOpen, setIsModalOpen] = useState<Boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<Boolean>(false);
 
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function Home() {
               className="relative active:scale-98 inline-flex items-center justify-center w-60 h-14 text-2xl font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
               onClick={handleSubmit}
             >
-              Play
+              Jogar
             </button>
           </div>
         </div>
