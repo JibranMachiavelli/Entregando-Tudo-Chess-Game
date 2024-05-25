@@ -10,3 +10,32 @@
         animation-delay: 4s;
     }
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 29, 29, 0.5) transparent;
+  }
+
+  .scrollbar-webkit::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-webkit::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-webkit::-webkit-scrollbar-thumb {
+    background: rgba(31, 41, 55, 0.5);
+    border-radius: 20px;
+    border: 1px solid transparent;
+  }
+
+  .scrollbar-webkit::-webkit-scrollbar-button {
+    display: none;
+  }

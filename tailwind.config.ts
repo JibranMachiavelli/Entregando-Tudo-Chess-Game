@@ -47,7 +47,34 @@ const config: Config = {
       scale: ['active', 'hover'],
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: { addUtilities:any }) {
+      const newUtilities = {
+        ".scrollbar-thin": {
+          scrollbarWidth: "thin",
+          scrollbarColor: "rgba(31, 29, 29, 0.5) transparent",
+        },
+        ".scrollbar-webkit": {
+          "&::-webkit-scrollbar": {
+            width: "8px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "transparent",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "rgba(31, 41, 55, 0.5)",
+            borderRadius: "20px",
+            border: "1px solid transparent",
+          },
+          "&::-webkit-scrollbar-button": {
+            display: "none",
+          },
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
+  ],
 };
 
 export default config;

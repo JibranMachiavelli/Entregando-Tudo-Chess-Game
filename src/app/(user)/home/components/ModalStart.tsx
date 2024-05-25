@@ -9,11 +9,7 @@ import ModalStartType from './ModalStartType';
 import ModalStartTimer from './ModalStartTimer';
 import ModalStartPlayer from './ModalStartPlayer';
 
-export default function ModalStart({
-  setIsModalOpen,
-}: {
-  setIsModalOpen: any;
-}) {
+export default function ModalStart({ onClose }: { onClose: () => void }) {
   const [modalContent, setModalContent] = useState<string>('start');
 
   function handleSubmitOption(option: string) {
@@ -21,12 +17,12 @@ export default function ModalStart({
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="relative dark:bg-gray-700 rounded-lg w-[60vh] h-[65vh]">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
+      <div className="relative dark:bg-gray-700 rounded-lg w-[60vh] h-fit">
         <div className="flex flex-col items-center justify-center m-4 h-full gap-4">
           <IoMdClose
             className="absolute top-2 right-2 cursor-pointer transition-all hover:scale-95 hover:dark:bg-gray-500 rounded-md text-4xl text-gray-400"
-            onClick={() => setIsModalOpen(false)}
+            onClick={onClose}
           />
           <div className="flex items-center space-x-4">
             <Image
@@ -53,7 +49,9 @@ export default function ModalStart({
                 className="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
               >
                 <div className="block">
-                  <div className="text-left w-full text-lg font-semibold select-none">Type</div>
+                  <div className="text-left w-full text-lg font-semibold select-none">
+                    Type
+                  </div>
                   <div className="w-full text-gray-500 dark:text-gray-400 select-none">
                     Selecione o tipo de jogo
                   </div>
@@ -64,7 +62,9 @@ export default function ModalStart({
                 className="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
               >
                 <div className="block">
-                  <div className="text-left w-full text-lg font-semibold select-none">Timer</div>
+                  <div className="text-left w-full text-lg font-semibold select-none">
+                    Timer
+                  </div>
                   <div className="w-full text-gray-500 dark:text-gray-400 select-none">
                     Selecione o tempo que deseja
                   </div>
@@ -75,7 +75,9 @@ export default function ModalStart({
                 className="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
               >
                 <div className="block">
-                  <div className="text-left w-full text-lg font-semibold select-none">Players</div>
+                  <div className="text-left w-full text-lg font-semibold select-none">
+                    Players
+                  </div>
                   <div className="w-full text-gray-500 dark:text-gray-400 select-none">
                     Selecione os jogadores
                   </div>
@@ -90,13 +92,13 @@ export default function ModalStart({
             </>
           )}
           {modalContent === 'type' && (
-            <ModalStartType setModalContent={setModalContent} />
+            <ModalStartType onClick={() => setModalContent("start")} />
           )}
           {modalContent === 'timer' && (
-            <ModalStartTimer setModalContent={setModalContent} />
+            <ModalStartTimer onClick={() => setModalContent("start")} />
           )}
           {modalContent === 'players' && (
-            <ModalStartPlayer setModalContent={setModalContent}/>
+            <ModalStartPlayer onClick={() => setModalContent("start")} />
           )}
         </div>
       </div>

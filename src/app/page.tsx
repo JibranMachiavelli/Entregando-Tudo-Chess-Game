@@ -3,10 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import iconHorsePixel from './public/assets/icon-horse-pixel-01.png';
+import GlobalContext from './context/globalContext';
 
 export default function initialPage() {
   return (
-    <>
+    <GlobalContext>
       <div className="">
         <Link
           href="./login"
@@ -47,6 +48,6 @@ export default function initialPage() {
           </div>
         </Link>
       </div>
-    </>
+    </GlobalContext>
   );
 }
