@@ -1,9 +1,13 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ChessContext } from '../../../context/globalContext';
 
-export default function ModalStartTimer({ onClick }: { onClick: () => void }) {
+export default function ModalStartTimer({ onClick, onSelect }: { onClick: () => void; onSelect: (timer: string) => void }) {
   const [selectedTimer, setSelectedTimer] = useState<string | null>(null);
-  const { setTime } = useContext(ChessContext); // Obter o método setTime do contexto
+  const { setTime } = useContext(ChessContext);
+
+  useEffect(() => {
+    console.log('Timer selecionado:', selectedTimer);
+  }, [selectedTimer]);
 
   const handleTimerClick = (timer: string) => {
     setSelectedTimer(timer);
@@ -13,6 +17,7 @@ export default function ModalStartTimer({ onClick }: { onClick: () => void }) {
   const handleSelectClick = () => {
     if (selectedTimer) {
       setTime(selectedTimer);
+      onSelect(selectedTimer);
       onClick();
     }
   };
@@ -48,14 +53,12 @@ export default function ModalStartTimer({ onClick }: { onClick: () => void }) {
       </div>
       <button
         className={`w-full h-20 text-2xl border-b-4 font-extrabold text-white rounded-lg transition-all focus:scale-98 shadow-md ${
-          selectedTimer
-            ? 'border-green-700 bg-green-600 hover:scale-98 hover:shadow-green-900'
-            : 'border-red-700 bg-red-600 hover:scale-98 hover:shadow-red-900 cursor-not-allowed'
+          selectedTimer ? 'border-green-700 bg-green-600' : 'border-red-700 bg-red-600'
         }`}
         onClick={handleSelectClick}
         disabled={!selectedTimer}
       >
-        Selecionar
+        Selecionar Tempo
       </button>
     </>
   );

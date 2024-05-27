@@ -1,13 +1,15 @@
-'use client';
-
-import Image from 'next/image';
-import { useContext, useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ChessContext } from '../../../context/globalContext';
+import Image from 'next/image';
 import iconHorsePixel from '../../../public/assets/icon-horse-pixel-01.png';
 
-export default function ModalStartPlayer({ onClick }: { onClick: () => void }) {
+export default function ModalStartPlayer({ onClick, onSelect }: { onClick: () => void; onSelect: (player: string) => void }) {
   const { player, setPlayer } = useContext(ChessContext);
   const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null);
+
+  useEffect(() => {
+    console.log('Jogador selecionado:', selectedPlayer);
+  }, [selectedPlayer]);
 
   const handlePlayerClick = (playerName: string) => {
     setSelectedPlayer(playerName);
@@ -17,6 +19,7 @@ export default function ModalStartPlayer({ onClick }: { onClick: () => void }) {
   const handleSelectClick = () => {
     if (selectedPlayer) {
       setPlayer(selectedPlayer);
+      onSelect(selectedPlayer);
       onClick();
     }
   };
@@ -71,14 +74,12 @@ export default function ModalStartPlayer({ onClick }: { onClick: () => void }) {
 
       <button
         className={`w-full h-20 text-2xl border-b-4 font-extrabold text-white rounded-lg transition-all focus:scale-98 shadow-md ${
-          selectedPlayer
-            ? 'border-green-700 bg-green-600 hover:scale-98 hover:shadow-green-900'
-            : 'border-red-700 bg-red-600 hover:scale-98 hover:shadow-red-900 cursor-not-allowed'
+          selectedPlayer ? 'border-green-700 bg-green-600' : 'border-red-700 bg-red-600'
         }`}
         onClick={handleSelectClick}
         disabled={!selectedPlayer}
       >
-        Selecionar
+        Selecionar Jogador
       </button>
     </>
   );

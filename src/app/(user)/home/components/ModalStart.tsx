@@ -4,17 +4,34 @@ import Image from 'next/image';
 import { IoMdClose } from 'react-icons/io';
 import { TbSwords } from 'react-icons/tb';
 import iconHorsePixel from '../../../public/assets/icon-horse-pixel-01.png';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useRouter } from 'next/navigation';
+import { ChessContext } from '../../../context/globalContext';
 import ModalStartType from './ModalStartType';
 import ModalStartTimer from './ModalStartTimer';
 import ModalStartPlayer from './ModalStartPlayer';
 
 export default function ModalStart({ onClose }: { onClose: () => void }) {
+  const router = useRouter();
   const [modalContent, setModalContent] = useState<string>('start');
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedTimer, setSelectedTimer] = useState<string | null>(null);
+  const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null);
+  const { setType, setTime, setPlayer } = useContext(ChessContext);
 
-  function handleSubmitOption(option: string) {
-    setModalContent(option);
-  }
+  const handleSubmit = () => {
+    if (selectedType && selectedTimer && selectedPlayer) {
+      console.log('Iniciando partida com as informações:', {
+        type: selectedType,
+        timer: selectedTimer,
+        player: selectedPlayer,
+      });
+      router.push('./game');
+    } else {
+      console.log('Faltam informações para iniciar a partida.');
+      setModalContent('start');
+    }
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
@@ -45,7 +62,7 @@ export default function ModalStart({ onClose }: { onClose: () => void }) {
                 Selecione o tipo de partida:
               </p>
               <button
-                onClick={() => handleSubmitOption('type')}
+                onClick={() => setModalContent('type')}
                 className="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
               >
                 <div className="block">
@@ -58,7 +75,7 @@ export default function ModalStart({ onClose }: { onClose: () => void }) {
                 </div>
               </button>
               <button
-                onClick={() => handleSubmitOption('timer')}
+                onClick={() => setModalContent('timer')}
                 className="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
               >
                 <div className="block">
@@ -71,7 +88,7 @@ export default function ModalStart({ onClose }: { onClose: () => void }) {
                 </div>
               </button>
               <button
-                onClick={() => handleSubmitOption('players')}
+                onClick={() => setModalContent('players')}
                 className="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
               >
                 <div className="block">
@@ -84,21 +101,44 @@ export default function ModalStart({ onClose }: { onClose: () => void }) {
                 </div>
               </button>
               <button
-                className="w-full h-20 text-2xl border-b-4 border-green-700 bg-green-600 font-extrabold text-white rounded-lg transition-all focus:scale-98 shadow-md hover:scale-98 hover:shadow-green-900"
-                onClick={() => handleSubmitOption('type')}
+                className={`w-full h-20 text-2xl border-b-4 font-extrabold text-white rounded-lg transition-all focus:scale-98 shadow-md ${
+                  selectedType && selectedTimer && selectedPlayer
+                    ? 'border-green-700 bg-green-600'
+                    : 'border-red-700 bg-red-600'
+                }`}
+                onClick={handleSubmit}
+                disabled={!selectedType || !selectedTimer || !selectedPlayer}
               >
                 Começar Partida
               </button>
             </>
           )}
           {modalContent === 'type' && (
-            <ModalStartType onClick={() => setModalContent("start")} />
+            <ModalStartType
+              onClick={() => setModalContent('start')}
+              onSelect={(type) => {
+                setSelectedType(type);
+                setType(type);
+              }}
+            />
           )}
           {modalContent === 'timer' && (
-            <ModalStartTimer onClick={() => setModalContent("start")} />
+            <ModalStartTimer
+              onClick={() => setModalContent('start')}
+              onSelect={(timer) => {
+                setSelectedTimer(timer);
+                setTime(timer);
+              }}
+            />
           )}
           {modalContent === 'players' && (
-            <ModalStartPlayer onClick={() => setModalContent("start")} />
+            <ModalStartPlayer
+              onClick={() => setModalContent('start')}
+              onSelect={(player) => {
+                setSelectedPlayer(player);
+                setPlayer(player);
+              }}
+            />
           )}
         </div>
       </div>

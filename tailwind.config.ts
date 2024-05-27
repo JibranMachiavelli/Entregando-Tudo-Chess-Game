@@ -13,6 +13,8 @@ const config: Config = {
       },
       animation: {
         blob: "blob 10s infinite",
+        blink: 'blink 1s infinite',
+        revealFromRight: 'revealFromRight 1s ease-out forwards',
       },
       keyframes: {
         blob: {
@@ -34,7 +36,19 @@ const config: Config = {
           "100%": {
             transform: "translate(0px, 0px) scale(1)"
           }
-        }
+        },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        revealFromRight: {
+          '0%': {
+            clipPath: 'inset(0 0 0 100%)',
+          },
+          '100%': {
+            clipPath: 'inset(0 0 0 0)',
+          }
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -48,7 +62,7 @@ const config: Config = {
     },
   },
   plugins: [
-    function ({ addUtilities }: { addUtilities:any }) {
+    function ({ addUtilities }: { addUtilities: any }) {
       const newUtilities = {
         ".scrollbar-thin": {
           scrollbarWidth: "thin",

@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
 import { ChessContext } from '../../../context/globalContext';
 
-export default function ModalStartType({ onClick }: { onClick: () => void }) {
+export default function ModalStartType({ onClick, onSelect }: { onClick: () => void; onSelect: (type: string) => void }) {
   const [selectedType, setSelectedType] = useState<string | null>(null);
-  const { setType } = useContext(ChessContext); // Obter o método setType do contexto
+  const { setType } = useContext(ChessContext);
 
   const handleTypeClick = (type: string) => {
     setSelectedType(type);
@@ -12,7 +12,8 @@ export default function ModalStartType({ onClick }: { onClick: () => void }) {
 
   const handleSelectClick = () => {
     if (selectedType) {
-      setType(selectedType); // Atualizar o tipo no contexto
+      setType(selectedType);
+      onSelect(selectedType);
       onClick();
     }
   };
@@ -65,14 +66,11 @@ export default function ModalStartType({ onClick }: { onClick: () => void }) {
 
       <button
         className={`w-full mt-28 h-20 text-2xl border-b-4 font-extrabold text-white rounded-lg transition-all focus:scale-98 shadow-md ${
-          selectedType
-            ? 'border-green-700 bg-green-600 hover:scale-98 hover:shadow-green-900'
-            : 'border-red-700 bg-red-600 hover:scale-98 hover:shadow-red-900 cursor-not-allowed'
+          selectedType ? 'bg-green-600 border-green-700' : 'border-red-700 bg-red-600'
         }`}
         onClick={handleSelectClick}
-        disabled={!selectedType}
       >
-        Selecionar
+        Selecionar Tipo
       </button>
     </>
   );

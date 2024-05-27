@@ -13,7 +13,7 @@ export default function initialPage() {
           href="./login"
           className="cursor-default"
         >
-          <div className="w-screen h-screen bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678]">
+          <div className="w-screen h-screen bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678] cursor-pointer">
             <div className="flex items-center">
               <div className="border-b m-2 w-full z-20"></div>
               <div className="relative w-12 h-12 m-2">
@@ -43,7 +43,7 @@ export default function initialPage() {
             </div>
 
             <div className="fixed bottom-0 left-0 w-full flex justify-center mb-20">
-              <p className="text-white font-light">Click to continue...</p>
+              <p className="text-white font-light text-xl animate-blink">Click to continue...</p>
             </div>
           </div>
         </Link>
