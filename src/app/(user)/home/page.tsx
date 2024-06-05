@@ -30,22 +30,25 @@ export default function Home() {
 
   return (
       <div className="w-screen h-screen bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678] relative">
-        <div className="absolute top-4 right-4 w-12 h-12 z-20">
-          <Image
-            src={iconHorsePixel}
-            alt="Icon"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-full"
-          />
-        </div>
+        <div className="flex items-center">
+              <div className="border-b m-2 w-full z-20"></div>
+              <div className="relative w-12 h-12 m-2">
+                <Image
+                  src={iconHorsePixel}
+                  alt="Icon Inicial"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-full z-20"
+                />
+              </div>
+            </div>
         <div className="flex justify-center items-center h-[85vh]">
-          <div className="relative text-9xl font-extrabold select-none animate-revealFromRight text-white px-4 border-2 border-white pb-2 rounded-md">
+          <div className="relative text-9xl font-extrabold select-none animate-revealFromRight text-white px-4 pb-2 rounded-md mb-28">
             Chess
           </div>
         </div>
         <div className="z-20 absolute top-1/2 right-3/4 transform -translate-y-1/2 bg-white bg-opacity-20 rounded-xl p-4 text-white w-1/5">
-          <h1 className="text-4xl text-white font-extrabold py-4">Ranking</h1>
+          <h1 className="text-4xl text-white font-extrabold py-4 text-center mb-4">Ranking</h1>
           <div className="overflow-auto h-[320.8px] space-y-4 bg-scroll scrollbar-thin scrollbar-webkit">
             {players.map((player) => (
               <button
@@ -67,7 +70,7 @@ export default function Home() {
           <div className="relative inline-flex group">
             <div className="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
             <button
-              className="relative text-4xl active:scale-98 inline-flex items-center justify-center w-80 h-24 font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              className="relative text-4xl active:scale-98 inline-flex items-center justify-center w-72 h-20 font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
               onClick={handleToggleModal}
             >
               Jogar
