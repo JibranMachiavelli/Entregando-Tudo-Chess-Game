@@ -8,7 +8,7 @@ const horizontalAxis = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 export default function ChessBoard() {
   return (
     <div className="flex items-center justify-center w-screen h-screen sm:h-full sm:w-full lg:w-3/5 bg-blue-500">
-      <div className="w-4/5 h-2/5 sm:h-3/5 sm:w-4/5 lg:h-3/5 lg:w-4/5 xl:h-3/5 xl:w-[70%] 2xl:h-4/5 2xl:w-[70%] rounded-md bg-green-500">
+      <div className="w-[350px] h-[350px] sm:h-[450px] sm:w-[450px] lg:h-[450px] lg:w-[450px] xl:h-[500px] xl:w-[500px] 2xl:h-[600px] 2xl:w-[600px] rounded-md bg-green-500">
         a
       </div>
     </div>
