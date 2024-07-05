@@ -7,7 +7,6 @@ export default function ModalStartType({ onClick, onSelect }: { onClick: () => v
 
   const handleTypeClick = (type: string) => {
     setSelectedType(type);
-    console.log(type);
   };
 
   const handleSelectClick = () => {

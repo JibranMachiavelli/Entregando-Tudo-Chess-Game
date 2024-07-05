@@ -33,7 +33,6 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
     player,
     setPlayer,
   }), [type, time, player]);
-
   return (
     <ChessContext.Provider value={values}>
       {children}

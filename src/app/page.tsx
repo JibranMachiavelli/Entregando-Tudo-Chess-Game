@@ -14,18 +14,6 @@ export default function initialPage() {
           className="cursor-default"
         >
           <div className="w-screen h-screen bg-gradient-to-r from-[#014040] via-[#02735E] to-[#03A678] cursor-pointer">
-            <div className="flex items-center">
-              <div className="border-b m-2 w-full z-20"></div>
-              <div className="relative w-12 h-12 m-2">
-                <Image
-                  src={iconHorsePixel}
-                  alt="Icon Inicial"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-full z-20"
-                />
-              </div>
-            </div>
             <div className="fixed top-[41.67vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <div className="flex flex-col items-center justify-center z-0">
                 <div className="relative text-center z-0">
@@ -36,7 +24,7 @@ export default function initialPage() {
                     Chess
                   </h1>
                   <h2 className="relative text-6xl text-white font-medium z-20">
-                    Legends
+                    Game
                   </h2>
                 </div>
               </div>

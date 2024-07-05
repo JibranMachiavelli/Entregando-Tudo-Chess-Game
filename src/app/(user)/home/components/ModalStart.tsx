@@ -10,6 +10,7 @@ import { ChessContext } from '../../../context/globalContext';
 import ModalStartType from './ModalStartType';
 import ModalStartTimer from './ModalStartTimer';
 import ModalStartPlayer from './ModalStartPlayer';
+import Game from '../../game/page';
 
 export default function ModalStart({ onClose }: { onClose: () => void }) {
   const router = useRouter();
@@ -26,12 +27,14 @@ export default function ModalStart({ onClose }: { onClose: () => void }) {
         timer: selectedTimer,
         player: selectedPlayer,
       });
+
       router.push('./game');
     } else {
       console.log('Faltam informações para iniciar a partida.');
       setModalContent('start');
     }
   };
+  const flag = false;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
@@ -140,6 +143,17 @@ export default function ModalStart({ onClose }: { onClose: () => void }) {
               }}
             />
           )}
+          {/* Passando para o Game */}
+          {flag  &&
+            selectedType !== null &&
+            selectedTimer !== null &&
+            selectedPlayer !== null && (
+              <Game
+                selectedType={selectedType}
+                selectedTimer={selectedTimer}
+                selectedPlayer={selectedPlayer}
+              />
+            )}
         </div>
       </div>
     </div>

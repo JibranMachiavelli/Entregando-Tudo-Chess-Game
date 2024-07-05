@@ -62,7 +62,7 @@ export default function Login() {
               </div>
             </div>
           </form>
-          <div className="w-[46.67vh] m-auto z-20">
+          <div className="w-[46.67vh] m-auto z-20 hidden md:block">
             <Image
               src={loginLogo}
               alt="Login Logo"

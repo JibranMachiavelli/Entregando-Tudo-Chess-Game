@@ -7,13 +7,8 @@ export default function ModalStartPlayer({ onClick, onSelect }: { onClick: () =>
   const { player, setPlayer } = useContext(ChessContext);
   const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null);
 
-  useEffect(() => {
-    console.log('Jogador selecionado:', selectedPlayer);
-  }, [selectedPlayer]);
-
   const handlePlayerClick = (playerName: string) => {
     setSelectedPlayer(playerName);
-    console.log(playerName);
   };
 
   const handleSelectClick = () => {

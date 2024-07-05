@@ -5,13 +5,8 @@ export default function ModalStartTimer({ onClick, onSelect }: { onClick: () => 
   const [selectedTimer, setSelectedTimer] = useState<string | null>(null);
   const { setTime } = useContext(ChessContext);
 
-  useEffect(() => {
-    console.log('Timer selecionado:', selectedTimer);
-  }, [selectedTimer]);
-
   const handleTimerClick = (timer: string) => {
     setSelectedTimer(timer);
-    console.log(timer);
   };
 
   const handleSelectClick = () => {

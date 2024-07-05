@@ -37,7 +37,6 @@ export default function RootLayout({
             >
               <CiMenuBurger />
             </button>
-
             <div
               className={`hidden sm:flex sm:w-auto ${
                 isMenuOpen ? 'block' : 'hidden'
@@ -45,14 +44,14 @@ export default function RootLayout({
             >
               <ul className="flex items-center justify-center gap-8 text-white font-semibold">
                 <li>
-                  <p className="text-blue-600 cursor-pointer hover:text-blue-800">
-                    Home
-                  </p>
+                  <Link href={'./home'}>
+                    <p className="cursor-pointer hover:text-blue-800">Home</p>
+                  </Link>
                 </li>
                 <li>
-                  <Link href={'./perfil'}>
-                    <p className="cursor-pointer hover:text-blue-800">Perfil</p>
-                  </Link>
+                  <p className="cursor-pointer text-blue-600 hover:text-blue-800">
+                    Perfil
+                  </p>
                 </li>
                 <li>
                   <Link href={'./ranking'}>
@@ -76,16 +75,16 @@ export default function RootLayout({
             <div className="fixed right-0 sm:hidden bg-white rounded-lg shadow-lg text-center font-semibold">
               <ul>
                 <li className="py-2 px-4 hover:bg-gray-200">
-                  <p className="block text-blue-800 focus:text-blue-800">
-                    Home
-                  </p>
-                </li>
-                <li className="py-2 px-4 hover:bg-gray-200">
-                  <Link href={'./perfil'}>
+                  <Link href={'./home'}>
                     <p className="block text-gray-800 hover:text-gray-900">
-                      Perfil
+                      Home
                     </p>
                   </Link>
+                </li>
+                <li className="py-2 px-4 hover:bg-gray-200">
+                  <p className="block text-blue-800 hover:text-blue-900">
+                    Perfil
+                  </p>
                 </li>
                 <li className="py-2 px-4 hover:bg-gray-200">
                   <Link href={'./ranking'}>
